@@ -51,11 +51,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // Material Data tables
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
+import { TopNavComponent } from './top-nav/top-nav.component'
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TopNavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
