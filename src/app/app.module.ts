@@ -52,11 +52,45 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { TopNavComponent } from './top-nav/top-nav.component'
+import { TopNavComponent } from './top-nav/top-nav.component';
+
+// EDS Components
+import { AddressesComponent } from './addresses-components/addresses/addresses.component';
+import { ViewAddressComponent } from './addresses-components/view-address/view-address.component';
+
+import { OwnersComponent } from './owners-components/owners/owners.component';
+import { ViewOwnerComponent } from './owners-components/view-owner/view-owner.component';
+
+import { BuildingGroupsComponent } from './buildinggroups-components/building-groups/building-groups.component';
+import { ViewBuildingGroupComponent } from './buildinggroups-components/view-building-group/view-building-group.component';
+
+import { BuildingsComponent } from './building-components/buildings/buildings.component';
+import { ViewBuildingComponent } from './building-components/view-building/view-building.component';
+
+import { EnergyMetersComponent } from './energymeters-components/energy-meters/energy-meters.component';
+import { ViewEnergyMeterComponent } from './energymeters-components/view-energy-meter/view-energy-meter.component';
+
+import { MeasurementsComponent } from './measurement-components/measurements/measurements.component';
+import { ViewMeasurementComponent } from './measurement-components/view-measurement/view-measurement.component';
 
 
 @NgModule({
-  declarations: [AppComponent, TopNavComponent],
+  declarations: [
+    AppComponent,
+    TopNavComponent,
+    AddressesComponent,
+    ViewAddressComponent,
+    OwnersComponent,
+    ViewOwnerComponent,
+    BuildingGroupsComponent,
+    ViewBuildingGroupComponent,
+    BuildingsComponent,
+    ViewBuildingComponent,
+    EnergyMetersComponent,
+    ViewEnergyMeterComponent,
+    MeasurementsComponent,
+    ViewMeasurementComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
