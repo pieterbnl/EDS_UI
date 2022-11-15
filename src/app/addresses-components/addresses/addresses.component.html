@@ -1,1 +1,45 @@
-<p>addresses works!</p>
+<div class="page-header">
+  <div class="container">
+    <h1>Addresses</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="mt-1">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <ng-container matColumnDef="addressType">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.addressType}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="streetName">
+        <th mat-header-cell *matHeaderCellDef> Streetname </th>
+        <td mat-cell *matCellDef="let element"> {{element.streetName}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="streetNumber">
+        <th mat-header-cell *matHeaderCellDef> Streetnumber </th>
+        <td mat-cell *matCellDef="let element"> {{element.streetNumber}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="postalCode">
+        <th mat-header-cell *matHeaderCellDef> Postal Code </th>
+        <td mat-cell *matCellDef="let element"> {{element.postalCode}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
