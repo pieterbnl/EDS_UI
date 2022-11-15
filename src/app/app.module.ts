@@ -74,6 +74,8 @@ import { MeasurementsComponent } from './measurement-components/measurements/mea
 import { ViewMeasurementComponent } from './measurement-components/view-measurement/view-measurement.component';
 
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,8 +95,10 @@ import { ViewMeasurementComponent } from './measurement-components/view-measurem
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+
     MatAutocompleteModule,
     MatCheckboxModule,
     MatDatepickerModule,
