@@ -34,9 +34,7 @@ export class AddressService {
       postalCode: addressRequest.postalCode,
       city: addressRequest.city,
     };
-
-    console.log("?" + updatedAddress);
-
+    
     return this.httpClient.put<Address>(
       this.baseApiUrl + 'addresses/' + addressId, updatedAddress
     );
