@@ -24,8 +24,9 @@ export class AddressService {
     );
   }
 
-  updateAddress(addressId: string, addressRequest: Address): Observable<Address> {
-    const updatedAddress: UpdateAddress = {      
+  updateAddress(addressId: number, addressRequest: Address): Observable<Address> {
+    const updatedAddress: UpdateAddress = {
+      id: addressRequest.id,
       type: addressRequest.type,
       description: addressRequest.description,
       streetName: addressRequest.streetName,
@@ -34,12 +35,14 @@ export class AddressService {
       city: addressRequest.city,
     };
 
+    console.log("?" + updatedAddress);
+
     return this.httpClient.put<Address>(
       this.baseApiUrl + 'addresses/' + addressId, updatedAddress
     );
   }
 
-  deleteAddress(addressId: string): Observable<Address> {
+  deleteAddress(addressId: number): Observable<Address> {
     return this.httpClient.delete<Address>(
       this.baseApiUrl + 'addresses/' + addressId
     );
