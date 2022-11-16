@@ -5,40 +5,51 @@
 </div>
 
 <div class="container">
-  <div class="mt-1">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+  <!-- Filter field -->
+  <div class="row end-xs mt-1">    
+    <div class="col-xs-12">
+      <input type="text" class="search-input" placeholder="search addresses"
+      [(ngModel)]="filterString"
+      (keyup)="filterAddresses()">
+      <a routerLink="/addresses/add" mat-raised-button color="primary" class="ml-1">Add Address</a>
+    </div>
+  </div>
+
+   <div class="mt-1 mat-elevation-z6">
+    <table mat-table matSort [dataSource]="dataSource" class="">    
       
       <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
         <td mat-cell *matCellDef="let element"> {{addressType[element.type]}} </td>
       </ng-container>
       
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
         <td mat-cell *matCellDef="let element"> {{element.description}} </td>
       </ng-container>
       
       <ng-container matColumnDef="streetName">
-        <th mat-header-cell *matHeaderCellDef> Streetname </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Streetname </th>
         <td mat-cell *matCellDef="let element"> {{element.streetName}}</td>
       </ng-container>
       
       <ng-container matColumnDef="streetNumber">
-        <th mat-header-cell *matHeaderCellDef> Streetnumber </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Streetnumber </th>
         <td mat-cell *matCellDef="let element"> {{element.streetNumber}} </td>
       </ng-container>
       
       <ng-container matColumnDef="postalCode">
-        <th mat-header-cell *matHeaderCellDef> Postal Code </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Postal Code </th>
         <td mat-cell *matCellDef="let element"> {{element.postalCode}} </td>
       </ng-container>
 
       <ng-container matColumnDef="city">
-        <th mat-header-cell *matHeaderCellDef> City </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
         <td mat-cell *matCellDef="let element"> {{element.city}} </td>
       </ng-container>
 
-        <!-- Edit Column -->
+      <!-- Edit Column -->
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let element"> 
@@ -49,7 +60,15 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     
     </table>
+
+     <mat-paginator 
+        [length]="15"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 50]"
+        aria-label="Select page">
+      </mat-paginator>
+   
   </div>
 </div>

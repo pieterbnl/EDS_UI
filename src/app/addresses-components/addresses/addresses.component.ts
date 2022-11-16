@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Address } from 'src/app/models/api-models/address.model';
 import { AddressService } from '../address.service';
 import { AddressType } from 'src/app/models/api-models/address-type.model';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-addresses',
   templateUrl: './addresses.component.html',
@@ -13,8 +15,7 @@ import { AddressType } from 'src/app/models/api-models/address-type.model';
 export class AddressesComponent implements OnInit {
   
   addresses: Address[] = []; // UI model
-
-  public addressType = AddressType;;
+  addressType = AddressType;
 
   // List columns for Angular materialize table
   displayedColumns: string[] = [
@@ -40,8 +41,7 @@ export class AddressesComponent implements OnInit {
     // Fetch addresses
     this._addressService.getAddresses().subscribe(
       (successRepsonse) => {
-        this.addresses = successRepsonse;
-        console.log(this.addresses);
+        this.addresses = successRepsonse;        
         this.dataSource = new MatTableDataSource<Address>(this.addresses); // fill dataSource with list of addresses
 
         if (this.matPaginator) {
