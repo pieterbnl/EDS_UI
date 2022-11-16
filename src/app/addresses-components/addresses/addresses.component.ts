@@ -20,7 +20,8 @@ export class AddressesComponent implements OnInit {
     'streetName',
     'streetNumber',
     'postalCode',
-    'city',    
+    'city',
+    'edit',
   ];
 
   // Create datasource for Angular materialize table
