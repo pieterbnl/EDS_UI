@@ -1,6 +1,8 @@
+import { AddressType } from "./address-type.model";
+
 export interface Address {
   id: number,
-  addressType: number, // NOTE: define ENUM types later
+  type: AddressType,
   description: string,
   streetName: string,
   streetNumber: string,

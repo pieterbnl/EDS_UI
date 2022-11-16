@@ -8,9 +8,9 @@
   <div class="mt-1">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
-      <ng-container matColumnDef="addressType">
+      <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef> Type </th>
-        <td mat-cell *matCellDef="let element"> {{element.addressType}} </td>
+        <td mat-cell *matCellDef="let element"> {{addressType[element.type]}} </td>
       </ng-container>
       
       <ng-container matColumnDef="description">

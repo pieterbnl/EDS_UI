@@ -26,7 +26,7 @@ export class AddressService {
 
   updateAddress(addressId: string, addressRequest: Address): Observable<Address> {
     const updatedAddress: UpdateAddress = {      
-      addressType: addressRequest.addressType,
+      type: addressRequest.type,
       description: addressRequest.description,
       streetName: addressRequest.streetName,
       streetNumber: addressRequest.streetNumber,
@@ -47,7 +47,7 @@ export class AddressService {
 
   addAddress(addressRequest: Address): Observable<Address> {
     const newAddress: AddAddress = {
-      addressType: addressRequest.addressType,
+      type: addressRequest.type,
       description: addressRequest.description,
       streetName: addressRequest.streetName,
       streetNumber: addressRequest.streetNumber,
