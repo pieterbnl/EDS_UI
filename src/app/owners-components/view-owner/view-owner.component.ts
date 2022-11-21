@@ -8,6 +8,32 @@ import { OwnerService } from '../owner.service';
 import { Address } from 'src/app/models/api-models/address.model';
 import { AddressType } from 'src/app/models/api-models/address-type.model';
 import { BuildingGroup } from 'src/app/models/api-models/buildinggroup.model';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { NestedTreeControl } from '@angular/cdk/tree';
+
+interface BuildingGroupNode {
+  name: string;
+  children?: BuildingGroupNode[];
+}
+
+const TREE_DATA: BuildingGroupNode[] = [
+{
+    name: 'Building Group A',
+    children: [
+      { name: 'Building A1' },
+      { name: 'Building A2' },
+      { name: 'Building A3' }
+    ],
+  },
+  {
+    name: 'Building Group B',
+    children: [
+      { name: 'Building B1' },
+      { name: 'Building B2' },
+      { name: 'Building B3' }      
+    ],
+  },
+];
 
 @Component({
   selector: 'app-view-owner',
@@ -30,13 +56,21 @@ export class ViewOwnerComponent implements OnInit {
       postalCode: '',
       city: '',
     },
-    buildingGroup: <BuildingGroup>{},
+    buildingGroup: <BuildingGroup>{
+      id: 0,
+      name: '',
+      ownerId: 0,
+    },
   };
 
   public addressType = AddressType;
 
   isNewOwner = false;
   pageHeader = '';
+
+  // Building group tree
+  treeControl = new NestedTreeControl<BuildingGroupNode>((node) => node.children);
+  dataSource = new MatTreeNestedDataSource<BuildingGroupNode>();
 
   @ViewChild('ownerDetailsForm') ownerDetailsForm?: NgForm;
 
@@ -45,7 +79,12 @@ export class ViewOwnerComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private snackbar: MatSnackBar,
     private router: Router
-  ) {}
+  ) {
+    this.dataSource.data = TREE_DATA;
+  }
+
+  hasChild = (_: number, node: BuildingGroupNode) =>
+    !!node.children && node.children.length > 0;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -65,7 +104,7 @@ export class ViewOwnerComponent implements OnInit {
             (successResponse) => {
               console.log('fetching owner');
               this.owner = successResponse;
-              console.log(this.owner);              
+              console.log(this.owner);
             },
             (errorResponse) => {
               //
