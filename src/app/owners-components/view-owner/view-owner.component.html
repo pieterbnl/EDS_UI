@@ -1,1 +1,153 @@
-<p>view-owner works!</p>
+<div class="page-header">
+  <div class="container">
+    <h1>{{ pageHeader }}</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row top-row">
+    <div class="col-xs-12 row end-xs">
+      <a routerLink="/owners" color="primary" mat-raised-button>
+        <mat-icon>chevron_left</mat-icon>
+        Go back
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <form #ownerDetailsForm="ngForm">
+        <!-- Owner details -->
+        <div class="row">
+          <div class="col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Company Name</mat-label>
+              <input
+                type="text"
+                matInput
+                [(ngModel)]="owner.companyName"
+                name="companyName"
+                required
+              />
+              <mat-error>Company name is a required field</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <br />
+
+        <!-- Address details -->
+        <div class="row">
+          <div class="col-xs-8">
+            <mat-form-field appearance="outline">
+              <mat-label>Street Name</mat-label>
+              <input
+                type="text"
+                matInput
+                [(ngModel)]="owner.address.streetName"
+                name="streetName"
+                required
+              />
+              <mat-error>Street name is a required field</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Street Number</mat-label>
+              <input
+                type="text"
+                matInput
+                [(ngModel)]="owner.address.streetNumber"
+                name="streetNumber"
+                required
+              />
+              <mat-error>Street number is a required field</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Postal Code</mat-label>
+              <input
+                type="text"
+                matInput
+                [(ngModel)]="owner.address.postalCode"
+                name="postalCode"
+                required
+                minlength="5"
+              />
+              <mat-error>Postal Code is a required field</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-8">
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input
+                type="text"
+                matInput
+                [(ngModel)]="owner.address.city"
+                name="city"
+                required
+              />
+              <mat-error>City is a required field</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-4">
+            <mat-form-field appearance="outline">
+              <mat-label>Type</mat-label>
+              <mat-select [(ngModel)]="owner.address.type" name="type" required>
+                <mat-option
+                  *ngFor="let enum of addressType | keyvalue"
+                  [value]="enum.value"
+                >
+                  {{ addressType[enum.value] }}
+                </mat-option>
+                <mat-error>Type is a required field</mat-error>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <input
+                type="text"
+                matInput
+                [(ngModel)]="owner.address.description"
+                name="description"
+                maxlength="200"
+              />
+              <mat-error>City is a required field</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+       
+
+        <!-- show different buttons depending on if an address is to be added or edited-->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="row between-xs" *ngIf="!isNewOwner">
+              <button mat-raised-button color="primary" (click)="onUpdate()">
+                Save
+              </button>
+              <button mat-raised-button color="warn" (click)="onDelete()">
+                Delete
+              </button>
+            </div>
+            <div class="row between-xs" *ngIf="isNewOwner">
+              <button mat-raised-button color="primary" (click)="onAdd()">
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

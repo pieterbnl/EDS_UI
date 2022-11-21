@@ -33,8 +33,7 @@ export class OwnersComponent implements OnInit {
   ngOnInit(): void {
     // Fetch owners
     this._ownerService.getOwners().subscribe(
-      (successRepsonse) => {
-        console.log(successRepsonse);
+      (successRepsonse) => {        
         this.owners = successRepsonse;
         this.dataSource = new MatTableDataSource<Owner>(this.owners);
 
